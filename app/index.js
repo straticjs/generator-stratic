@@ -14,14 +14,20 @@ var StraticGenerator = yeoman.generators.Base.extend({
 
 		// Have Yeoman greet the user.
 		this.log(yosay(
-			'Welcome to the fantastic Stratic generator!'
+			'Hi, I\'m the Stratic generator, and I\'ll be your server today.'
 		));
 
 		var prompts = [{
-			type: 'confirm',
-			name: 'someOption',
-			message: 'Would you like to enable this option?',
-			default: true
+			   type: 'input',
+			   name: 'projectName',
+			message: 'What\'s the name of your project?',
+			default: 'Stratic project'
+		},
+		{
+			   type: 'list',
+			   name: 'projectType',
+			message: 'Is your project a website or a blog?',
+			choices: ['It\'s a blog!', 'It\'s a website!']
 		}];
 
 		this.prompt(prompts, function (props) {
