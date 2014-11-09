@@ -1,4 +1,4 @@
-b var gulp = require('gulp');
+var gulp = require('gulp');
 
 gulp.task('build', ['build:html', 'build:css', 'build:js'], function() {
 	
