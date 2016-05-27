@@ -29,6 +29,8 @@ gulp.task('build:blog:posts', function() {
 	           .pipe(gulp.dest('dist/blog'));
 });
 
+gulp.task('build:blog:index', function() {
+	// TODO
 });
 
 gulp.task('build:css', [''], function() {
@@ -40,19 +42,19 @@ gulp.task('build:js', [''], function() {
 });
 
 gulp.task('lint', ['lint:html', 'lint:css', 'lint:js'], function() {
-
-}); 
+	// TODO
+});
 
 gulp.task('lint:html', [''], function() {
-
+	// TODO
 });
 
 gulp.task('lint:css', [''], function() {
-
+	// TODO
 });
 
 gulp.task('lint:js', [''], function() {
-
+	// TODO
 });
 
 gulp.tawsk('watch', [''], function() {
