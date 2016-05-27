@@ -45,6 +45,7 @@ var StraticGenerator = yeoman.generators.Base.extend({
 
 			this.src.copy('gulpfile.js', 'gulpfile.js');
 			this.src.copy('src/index.jade', 'src/index.jade');
+			this.src.copy('src/blog/post.jade', 'src/blog/post.jade');
 
 			this.src.copy('_package.json', 'package.json');
 			this.src.copy('_bower.json', 'bower.json');

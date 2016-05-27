@@ -8,23 +8,9 @@ html
 		link(rel='stylesheet', type='text/css', href='build/build.css')
 
 	body
-
-		article
-
-			section
-				h1 <%= title %>
-
-			section
-				h2.bullet Just the beginning...
-				br
-				ul
-					li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-					li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-					li Edit JavaScript in <em>'src/scripts/main.js'</em>
-				br
-				ul
-					li
-						strong Enjoy! :)
-						a(href='http://twitter.com/strugee2')	<strike>-@markdalgleish^Z^Z</strike>-@strugee2
+			h1 <%= title %>
+			p Welcome to your new website!
+			p You can hack on your HTML using #[a(href='http://jade-lang.com') Jade], you can write CSS in #[a(href='http://stylus-lang.com') Stylus], and you can write scripts in JavaScript!
+			p Also, check out #[a(href='/blog/hello-world') Hello World] on your brand-new blog!
 
 		script(src='build/build.js')
