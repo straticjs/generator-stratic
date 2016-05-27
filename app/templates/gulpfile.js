@@ -34,10 +34,13 @@ gulp.task('build:blog:index', function() {
 });
 
 gulp.task('build:css', [''], function() {
-
+	gulp.src('src/styles/*')
+	    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('build:js', [''], function() {
+	return gulp.src('js/*')
+	           .pipe(gulp.dest('dist/js'));
 
 });
 
