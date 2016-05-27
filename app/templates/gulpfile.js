@@ -60,6 +60,8 @@ gulp.task('lint:js', [''], function() {
 	// TODO
 });
 
-gulp.tawsk('watch', [''], function() {
-
+gulp.task('watch', ['build'], function() {
+	gulp.watch('src/index.jade', ['build:html']);
+	gulp.watch('src/styles/*.styl', ['build:css']);
+	gulp.watch('src/scripts/*.js', ['build:js']);
 });
