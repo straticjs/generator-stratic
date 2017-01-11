@@ -74,6 +74,20 @@ var StraticGenerator = yeoman.generators.Base.extend({
 			);
 		},
 
+		styles: function () {
+			this.fs.copy(
+				this.templatePath('src/styles/main.styl'),
+				this.destinationPath('src/styles/main.styl')
+			);
+		},
+
+		scripts: function () {
+			this.fs.copy(
+				this.templatePath('src/scripts/main.js'),
+				this.destinationPath('src/scripts/main.js')
+			);
+		},
+
 		blogTemplates: function () {
 			this.fs.copy(
 				this.templatePath('src/includes/post.jade'),
