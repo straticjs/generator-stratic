@@ -51,7 +51,7 @@ gulp.task('build:blog:index', function() {
 	           .pipe(gulp.dest('dist/blog'));
 });
 
-gulp.task('rss', function() {
+gulp.task('build:blog:rss', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
 	           .pipe(remark().use(remarkHtml))
