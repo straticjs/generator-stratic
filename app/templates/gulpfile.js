@@ -67,15 +67,15 @@ gulp.task('build:blog:rss', function() {
 	           .pipe(gulp.dest('dist/blog'));
 });
 
-gulp.task('build:css', [''], function() {
+gulp.task('build:css', function() {
 	return gulp.src('src/styles/*.styl')
 	           .pipe(stylus())
 	           .pipe(rename({ extname: '.css' }))
 	           .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('build:js', [''], function() {
-	return gulp.src('js/*')
+gulp.task('build:js', function() {
+	return gulp.src('src/js/*.js')
 	           .pipe(gulp.dest('dist/js'));
 
 });
