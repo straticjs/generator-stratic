@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     jade = require('gulp-jade'),
+    stylus = require('gulp-stylus'),
     rename = require('gulp-rename'),
     parse = require('stratic-parse-header'),
     remark = require('gulp-remark'),
@@ -67,7 +68,9 @@ gulp.task('build:blog:rss', function() {
 });
 
 gulp.task('build:css', [''], function() {
-	return gulp.src('src/styles/*')
+	return gulp.src('src/styles/*.styl')
+	           .pipe(stylus())
+	           .pipe(rename({ extname: '.css' }))
 	           .pipe(gulp.dest('dist/css'));
 });
 
