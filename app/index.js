@@ -25,13 +25,26 @@ var StraticGenerator = yeoman.generators.Base.extend({
 		},
 		{
 			   type: 'list',
-			   name: 'projectType',
-			message: 'Is your project a website or a blog?',
-			choices: ['It\'s a blog!', 'It\'s a website!']
+			   name: 'questionPreference',
+			message: 'How many questions do you want to be asked?',
+			choices: ['Gimme a blog, like, NOW.', 'I have time for a couple important ones.', 'Show ALL the advanced options!']
 		}];
 
 		this.prompt(prompts, function (props) {
-			this.someOption = props.someOption;
+			this.projectName = props.projectName;
+			switch(props.questionPreference) {
+			case 'Gimme a blog, like, NOW.':
+				this.questionPreference = 'none';
+				break;
+			case 'I have time for a couple important ones.':
+				this.questionPreference = 'some';
+				break;
+			case 'Show ALL the advanced options!':
+				this.questionPreference = 'all';
+				break;
+			default:
+				throw new Error('unexpected results from Inquirer');
+			};
 
 			done();
 		}.bind(this));
