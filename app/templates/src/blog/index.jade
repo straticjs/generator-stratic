@@ -1,0 +1,73 @@
+extends /src/includes/layout.jade
+
+include /src/includes/post.jade
+
+block head
+	if indexType === 'main'
+		title Blog - <%= projectName =>
+	else if indexType === 'year'
+		title Posts from #{year} - <%= projectName =>
+	else if indexType === 'month'
+		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+		title Posts from #{monthName + ' ' + year} - <%= projectName =>
+	else if indexType === 'category'
+		title Posts categorized as "#{category}" - <%= projectName =>
+
+block content
+	.h-feed
+		//- Index title
+		if indexType === 'main'
+			h2.p-name Blog
+			p#postsFrom Show only posts from 
+				each year in includedYears
+					a(href='/blog/' + year + '/')= year
+					| 
+		else if indexType === 'year'
+			h2.p-name Posts from #{year}
+			p#postsFrom Show only posts from 
+				each month in includedMonths
+					- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+					- var monthStr = month + 1;
+					- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
+					a(href='/blog/' + year + '/' + monthStr + '/')= monthName
+					| 
+		else if indexType === 'month'
+			- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+			h2.p-name Posts from #{monthName + ' ' + year}
+		else if indexType === 'category'
+			h2.p-name Posts categorized as "#{category}"
+
+		//- Posts
+		each post, index in posts
+			+renderPost(post, true)
+
+			if index < posts.length - 1
+				hr
+
+		hr
+
+		//- Pages
+		- function pageUrl(cur, next) {
+		- 	if (cur === 2 && next === -1) return '../..';
+		- 	return '../' + (cur + next);
+		- 	}
+
+		#pages-footer
+			if pageCount !== 1
+				if page === 1
+					p
+						span.disabled-arrow ←
+						|  ⋅ Page #{page} out of #{pageCount} ⋅ 
+						a(href='page/2') →
+				else if page === pageCount
+					p
+						a(href=pageUrl(page, -1)) ←
+						|  ⋅ Page #{page} out of #{pageCount} ⋅ 
+						span.disabled-arrow →
+				else
+					p
+						a(href=pageUrl(page, -1)) ←
+						|  ⋅ Page #{page} out of #{pageCount} ⋅ 
+						a(href=pageUrl(page, 1)) →
+			else
+				p Page 1 of 1
