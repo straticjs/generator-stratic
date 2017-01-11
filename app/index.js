@@ -51,22 +51,70 @@ var StraticGenerator = yeoman.generators.Base.extend({
 	},
 
 	writing: {
-		app: function () {
-			this.dest.mkdir('src');
-			this.dest.mkdir('src/styles');
-			this.dest.mkdir('src/scripts');
-
-			this.src.copy('gulpfile.js', 'gulpfile.js');
-			this.src.copy('src/index.jade', 'src/index.jade');
-			this.src.copy('src/blog/post.jade', 'src/blog/post.jade');
-
-			this.src.copy('_package.json', 'package.json');
-			this.src.copy('_bower.json', 'bower.json');
+		gulpfile: function () {
+			this.fs.copyTpl(
+				this.templatePath('gulpfile.js'),
+				this.destinationPath('gulpfile.js'),
+				{
+				}
+			);
 		},
 
-		projectfiles: function () {
-			this.src.copy('editorconfig', '.editorconfig');
-			this.src.copy('jshintrc', '.jshintrc');
+		mainHTML: function () {
+			this.fs.copyTpl(
+				this.templatePath('src/index.jade'),
+				this.destinationPath('src/index.jade'),
+				{
+					projectName: this.projectName
+				}
+			);
+		},
+
+		blogTemplates: function () {
+			this.fs.copyTpl(
+				this.templatePath('src/blog/index.jade'),
+				this.destinationPath('src/blog/index.jade'),
+				{
+					projectName: this.projectName
+				}
+			);
+			this.fs.copyTpl(
+				this.templatePath('src/blog/post.jade'),
+				this.destinationPath('src/blog/post.jade'),
+				{
+					projectName: this.projectName
+				}
+			);
+		},
+
+		packageJSON: function () {
+			this.fs.copyTpl(
+				this.templatePath('_package.json'),
+				this.destinationPath('package.json'),
+				{
+				}
+			);
+		},
+
+		gitignore: function () {
+			this.fs.copy(
+				this.templatePath('gitignore'),
+				this.destinationPath('.gitignore')
+			);
+		},
+
+		editorConfig: function () {
+			this.fs.copy(
+				this.templatePath('editorconfig'),
+				this.destinationPath('.editorconfig')
+			);
+		},
+
+		jshint: function () {
+			this.fs.copy(
+				this.templatePath('jshintrc'),
+				this.destinationPath('.jshintrc')
+			);
 		}
 	},
 
