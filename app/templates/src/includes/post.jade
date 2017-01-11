@@ -1,0 +1,32 @@
+mixin renderPost(post, isIndex)
+	article.h-entry
+		//- Title
+		if isIndex
+			a(href='/blog/' + post.relative.replace('.md', ''))
+				h2.p-name= post.title
+		else
+			h1.p-name= post.title
+
+		//- Metadata
+		- var author = post.author;
+		- var time = post.time;
+		- var categories = post.categories;
+		- categories = categories.filter(function(el) { return !silentCategories.includes(el); });
+		- var date = new Date(time.epoch * 1000);
+		- var monthName = date.toLocaleString('en-us', {month: 'long'});
+		- var monthStr = date.getMonth() + 1;
+		- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
+		p.post-metadata Published by #[a.p-author.h-card(href='<%= domainName %>', rel='author')= author] on 
+			a(href='/blog/'+date.getFullYear()+'/'+monthStr+'/')= monthName
+			|  #{date.getDate()}, 
+			a(href='/blog/'+date.getFullYear()+'/')= date.getFullYear()
+			|  in 
+			for category, index in categories
+				a.p-category(href='/blog/category/' + category + '/') #{category}
+				if index < categories.length - 2
+					| , 
+				else if index === categories.length - 2
+					|  and 
+
+		//- Post content
+		.e-content!= post.contents.toString()

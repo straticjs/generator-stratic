@@ -1,15 +1,9 @@
-doctype html
-html
-	head
-		meta(charset='utf-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-		title #{metadata.title} - <%= projectName %>
+extends /src/includes/layout.jade
 
-		link(rel='stylesheet', type='text/css', href='build/build.css')
+include /src/includes/post.jade
 
-	body
-			h1 Blog post: #{metadata.title} - <%= projectName %>
-			p Published at #{metadata.time.epoch} by #{metadata.author}
-			div!= text
+block head
+	title #{file.title} - <%= projectName %>
 
-		script(src='build/build.js')
+block content
+	+renderPost(file, false)
