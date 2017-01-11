@@ -14,7 +14,7 @@ var StraticGenerator = yeoman.generators.Base.extend({
 
 		// Have Yeoman greet the user.
 		this.log(yosay(
-			'Hi, I\'m the Stratic generator, and I\'ll be your server today.'
+			'Hi, I\'m the Stratic generator, and I\'ll be your server today.\nWould you like a nice blog with a side of awesome?'
 		));
 
 		var prompts = [{
