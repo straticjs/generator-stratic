@@ -14,8 +14,10 @@ var gulp = require('gulp'),
     paginateIndexes = require('stratic-paginate-indexes'),
     indexesToRss = require('stratic-indexes-to-rss'),
     addsrc = require('gulp-add-src'),
+    ecstatic = require('ecstatic'),
     ghpages = require('gh-pages'),
-    path = require('path');
+    path = require('path'),
+    http = require('http');
 
 gulp.task('build', ['build:html', 'build:css', 'build:js', 'build:blog']);
 gulp.task('build:blog', ['build:blog:posts', 'build:blog:index', 'build:blog:rss']);
@@ -96,6 +98,12 @@ gulp.task('lint:js', [''], function() {
 
 gulp.task('deploy', ['build'], function(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+});
+
+gulp.task('serve', ['watch'], function() {
+	http.createServer(
+		ecstatic({ root: __dirname + '/dist' })
+	).listen(process.env.PORT || 8080);
 });
 
 gulp.task('watch', ['build'], function() {

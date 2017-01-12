@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
+    "ecstatic": "^2.1.0",
     "gh-pages": "^0.12.0",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
