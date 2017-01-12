@@ -10,6 +10,7 @@
     "gulp-jade": "^1.1.0",
     "gulp-remark": "^3.0.0",
     "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.6.0",
     "gulp-util": "^3.0.8",
     "remark-html": "^5.1.0",
     "stratic-date-in-path": "^2.0.0",
