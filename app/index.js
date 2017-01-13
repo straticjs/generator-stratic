@@ -93,7 +93,7 @@ var StraticGenerator = yeoman.generators.Base.extend({
 				this.templatePath('src/includes/post.jade'),
 				this.destinationPath('src/includes/post.jade')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/blog/hello-world.md'),
 				this.destinationPath('src/blog/hello-world.md')
 			);

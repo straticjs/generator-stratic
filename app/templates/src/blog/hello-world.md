@@ -1,6 +1,6 @@
 # Post information
 
-This post was published as "Hello, World!" at "0 UTC-0" by "Jane Doe", and was categorized as "example".
+This post was published as "Hello, World!" at "<%= Math.floor(Date.now() / 1000) %> UTC-0" by "Jane Doe", and was categorized as "example".
 
 # Post text
 
