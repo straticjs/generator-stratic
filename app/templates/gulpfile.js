@@ -12,7 +12,6 @@ var gulp = require('gulp'),
     dateInPath = require('stratic-date-in-path'),
     postsToIndex = require('stratic-posts-to-index'),
     paginateIndexes = require('stratic-paginate-indexes'),
-    indexesToRss = require('stratic-indexes-to-rss'),
     addsrc = require('gulp-add-src'),
     ecstatic = require('ecstatic'),
     ghpages = require('gh-pages'),
@@ -20,7 +19,7 @@ var gulp = require('gulp'),
     http = require('http');
 
 gulp.task('build', ['build:html', 'build:css', 'build:js', 'build:blog']);
-gulp.task('build:blog', ['build:blog:posts', 'build:blog:index', 'build:blog:rss']);
+gulp.task('build:blog', ['build:blog:posts', 'build:blog:index']);
 
 gulp.task('build:html', function() {
 	return gulp.src('src/*.jade')
@@ -51,21 +50,6 @@ gulp.task('build:blog:index', function() {
 	           .pipe(paginateIndexes())
 	           .pipe(jade({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
-	           .pipe(gulp.dest('dist/blog'));
-});
-
-gulp.task('build:blog:rss', function() {
-	return gulp.src('src/blog/*.md')
-	           .pipe(parse())
-	           .pipe(remark().use(remarkHtml))
-	           .pipe(dateInPath())
-	           .pipe(addsrc('src/blog/index.jade'))
-	           .pipe(postsToIndex('index.jade'))
-	           .pipe(indexesToRss({
-		           title: 'Blag!',
-		           copyright: '© Copyright 2017 Alice P. Hacker. All rights reserved.'
-	           }, 'https://example.net/blog/'))
-	           .pipe(rename({ extname: '.rss' }))
 	           .pipe(gulp.dest('dist/blog'));
 });
 
