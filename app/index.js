@@ -23,15 +23,20 @@ var StraticGenerator = yeoman.generators.Base.extend({
 			message: 'What\'s the name of your project?',
 			default: 'Stratic project'
 		},
+		/*
 		{
 			   type: 'list',
 			   name: 'questionPreference',
 			message: 'How many questions do you want to be asked?',
 			choices: ['Gimme a blog, like, NOW.', 'I have time for a couple important ones.', 'Show ALL the advanced options!']
-		}];
+		}
+		*/
+		];
 
 		this.prompt(prompts, function (props) {
 			this.projectName = props.projectName;
+			// TODO: this is a hack because questions aren't written yet; remove later
+			props.questionPreference = 'Gimme a blog, like, NOW.';
 			switch(props.questionPreference) {
 			case 'Gimme a blog, like, NOW.':
 				this.questionPreference = 'none';
