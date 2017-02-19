@@ -1,6 +1,6 @@
 {
   "name": "generator-stratic",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
