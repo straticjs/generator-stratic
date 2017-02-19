@@ -5,8 +5,8 @@ var gulp = require('gulp'),
     jade = require('gulp-jade'),
     stylus = require('gulp-stylus'),
     rename = require('gulp-rename'),
-    parse = require('stratic-parse-header'),
     remark = require('gulp-remark'),
+    frontMatter = require('gulp-gray-matter'),
     remarkHtml = require('remark-html'),
     attachToTemplate = require('gulp-attach-to-template'),
     dateInPath = require('stratic-date-in-path'),
@@ -30,7 +30,7 @@ gulp.task('build:html', function() {
 
 gulp.task('build:blog:posts', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(parse())
+	           .pipe(frontMatter({property: ''}))
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
@@ -42,7 +42,7 @@ gulp.task('build:blog:posts', function() {
 
 gulp.task('build:blog:index', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(parse())
+	           .pipe(frontMatter({property: ''}))
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))

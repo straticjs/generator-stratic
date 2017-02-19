@@ -1,7 +1,11 @@
-# Post information
-
-This post was published as "Hello, World!" at "<%= Math.floor(Date.now() / 1000) %> UTC-0" by "Jane Doe", and was categorized as "example".
-
-# Post text
+---
+title: "Hello, World!"
+time:
+  epoch: <%= Math.floor(Date.now() / 1000) %>
+  utcoffset: "UTC-0"
+author: "Alex Jordan"
+categories:
+  - example
+---
 
 This is your first blog post! Edit it, delete it, or do whatever you want with it! (Note, also, that the filename becomes the URL slug.)
