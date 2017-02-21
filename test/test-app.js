@@ -2,8 +2,8 @@
 'use strict';
 
 var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
 var os = require('os');
 
 describe('stratic:app', function () {
@@ -11,7 +11,7 @@ describe('stratic:app', function () {
 		helpers.run(path.join(__dirname, '../app'))
 			.inDir(path.join(os.tmpdir(), './temp-test'))
 			.withOptions({ 'skip-install': true })
-			.withPrompt({
+			.withPrompts({
 				projectName: 'Test project'
 			})
 			.on('end', done);
