@@ -2,6 +2,16 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
+## 1.0.0 beta 3 - future
+
+### Changed
+
+* Upgrade deps
+
+### Breaking
+
+* Node 4+ is now required due to a dep upgrade (`yosay@2` requires ES2015)
+
 ## 1.0.0 beta 2 - 2017-02-20
 
 ### Fixed
