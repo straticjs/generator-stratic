@@ -33,7 +33,7 @@ var StraticGenerator = yeoman.Base.extend({
 		*/
 		];
 
-		this.prompt(prompts, function (props) {
+		this.prompt(prompts).then(function (props) {
 			this.projectName = props.projectName;
 			// TODO: this is a hack because questions aren't written yet; remove later
 			props.questionPreference = 'Gimme a blog, like, NOW.';
