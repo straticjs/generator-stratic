@@ -5,6 +5,10 @@ var path = require('path');
 var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
 var os = require('os');
+var spawn = require('smart-spawn');
+
+// Tests failing on your local machine? Try increasing this timeout.
+var installTimeout = 40 * 1000;
 
 var files = ['package.json',
              '.editorconfig',
@@ -22,9 +26,11 @@ var files = ['package.json',
              '.jshintrc'];
 
 describe('stratic:app', function () {
+	var tmpdir = path.join(os.tmpdir(), './temp-test');
+
 	beforeEach(function () {
 		return helpers.run(path.join(__dirname, '../app'))
-		              .inDir(path.join(os.tmpdir(), './temp-test'))
+		              .inDir(tmpdir)
 		              .withOptions({ 'skip-install': true })
 		              .withPrompts({
 		              	projectName: 'Test project'
@@ -39,5 +45,15 @@ describe('stratic:app', function () {
 		assert.noFileContent(files.map(function (filename) {
 			return [filename, '<%'];
 		}));
+	});
+
+	it('can run `gulp build`', function (done) {
+		// TODO: only do this when requested
+		this.timeout(installTimeout);
+		spawn('npm', ['install'], tmpdir, function (err) {
+			if (err) return done(err);
+
+			return spawn('gulp', ['build'], tmpdir, done);
+		});
 	});
 });
