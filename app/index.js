@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var StraticGenerator = yeoman.generators.Base.extend({
+var StraticGenerator = yeoman.Base.extend({
 	initializing: function () {
 		this.pkg = require('../package.json');
 	},
