@@ -47,8 +47,11 @@ describe('stratic:app', function () {
 		}));
 	});
 
+	it('creates source files with the correct content');
+
 	it('can run `gulp build`', function (done) {
 		// TODO: only do this when requested
+		// TODO: assert that the correct files are created
 		this.timeout(installTimeout);
 		spawn('npm', ['install'], tmpdir, function (err) {
 			if (err) return done(err);
@@ -56,4 +59,24 @@ describe('stratic:app', function () {
 			return spawn('gulp', ['build'], tmpdir, done);
 		});
 	});
+
+	it('will build all the required files');
+
+	it('will build the correct HTML content');
+
+	it('will build the correct CSS content');
+
+	it('will build the correct JS content');
+
+	it('will build valid HTML files');
+
+	it('will build HTML with valid microformats2 markup');
+
+	it('will build valid CSS files');
+
+	it('will build valid JS files');
+
+	it('can run `gulp serve`');
+
+	it('can run `gulp deploy`');
 });
