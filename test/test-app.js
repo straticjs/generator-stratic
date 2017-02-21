@@ -7,14 +7,13 @@ var assert = require('yeoman-assert');
 var os = require('os');
 
 describe('stratic:app', function () {
-	before(function (done) {
-		helpers.run(path.join(__dirname, '../app'))
-			.inDir(path.join(os.tmpdir(), './temp-test'))
-			.withOptions({ 'skip-install': true })
-			.withPrompts({
-				projectName: 'Test project'
-			})
-			.on('end', done);
+	beforeEach(function () {
+		return helpers.run(path.join(__dirname, '../app'))
+		              .inDir(path.join(os.tmpdir(), './temp-test'))
+		              .withOptions({ 'skip-install': true })
+		              .withPrompts({
+		              	projectName: 'Test project'
+		              });
 	});
 
 	it('creates files', function () {
