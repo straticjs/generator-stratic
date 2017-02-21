@@ -37,11 +37,11 @@ describe('stratic:app', function () {
 		              });
 	});
 
-	it('creates files', function () {
+	it('creates source files', function () {
 		assert.file(files);
 	});
 
-	it('templates files properly', function () {
+	it('templates source files properly', function () {
 		assert.noFileContent(files.map(function (filename) {
 			return [filename, '<%'];
 		}));
