@@ -91,7 +91,7 @@ gulp.task('serve', ['watch'], function() {
 });
 
 gulp.task('watch', ['build'], function() {
-	gulp.watch('src/*.jade', ['build:html']);
+	gulp.watch(['src/*.jade', 'src/includes/*.jade'], ['build:html', 'build:blog:posts', 'build:blog:index']);
 	gulp.watch('src/styles/*.styl', ['build:css']);
 	gulp.watch('src/scripts/*.js', ['build:js']);
 	gulp.watch('src/blog/*.md', ['build:blog']);
