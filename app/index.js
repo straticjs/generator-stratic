@@ -150,7 +150,7 @@ var StraticGenerator = yeoman.Base.extend({
 	},
 
 	end: function () {
-		this.installDependencies();
+		this.installDependencies({ bower: false });
 	}
 });
 
