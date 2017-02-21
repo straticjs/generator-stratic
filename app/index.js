@@ -22,7 +22,7 @@ var StraticGenerator = yeoman.generators.Base.extend({
 			   name: 'projectName',
 			message: 'What\'s the name of your project?',
 			default: 'Stratic project'
-		},
+		}
 		/*
 		{
 			   type: 'list',
