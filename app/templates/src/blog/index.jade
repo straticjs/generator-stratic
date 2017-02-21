@@ -4,14 +4,14 @@ include /src/includes/post.jade
 
 block head
 	if indexType === 'main'
-		title Blog - <%= projectName =>
+		title Blog - <%= projectName %>
 	else if indexType === 'year'
-		title Posts from #{year} - <%= projectName =>
+		title Posts from #{year} - <%= projectName %>
 	else if indexType === 'month'
 		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
-		title Posts from #{monthName + ' ' + year} - <%= projectName =>
+		title Posts from #{monthName + ' ' + year} - <%= projectName %>
 	else if indexType === 'category'
-		title Posts categorized as "#{category}" - <%= projectName =>
+		title Posts categorized as "#{category}" - <%= projectName %>
 
 block content
 	.h-feed
