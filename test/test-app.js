@@ -12,16 +12,26 @@ describe('stratic:app', function () {
 			.inDir(path.join(os.tmpdir(), './temp-test'))
 			.withOptions({ 'skip-install': true })
 			.withPrompt({
-				someOption: true
+				projectName: 'Test project'
 			})
 			.on('end', done);
 	});
 
 	it('creates files', function () {
 		assert.file([
-			'bower.json',
 			'package.json',
 			'.editorconfig',
+			'package.json',
+			'gulpfile.js',
+			'.gitignore',
+			'src/index.jade',
+			'src/blog/post.jade',
+			'src/blog/index.jade',
+			'src/blog/hello-world.md',
+			'src/includes/layout.jade',
+			'src/includes/post.jade',
+			'src/scripts/main.js',
+			'src/styles/main.styl',
 			'.jshintrc'
 		]);
 	});
