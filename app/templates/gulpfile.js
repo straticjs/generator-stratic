@@ -61,7 +61,7 @@ gulp.task('build:css', function() {
 });
 
 gulp.task('build:js', function() {
-	return gulp.src('src/js/*.js')
+	return gulp.src('src/scripts/*.js')
 	           .pipe(gulp.dest('dist/js'));
 
 });
