@@ -5,11 +5,11 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
 var StraticGenerator = yeoman.extend({
-	initializing: function () {
+	initializing () {
 		this.pkg = require('../package.json');
 	},
 
-	prompting: function () {
+	prompting () {
 		var done = this.async();
 
 		// Have Yeoman greet the user.
@@ -33,7 +33,7 @@ var StraticGenerator = yeoman.extend({
 		*/
 		];
 
-		this.prompt(prompts).then(function (props) {
+		this.prompt(prompts).then(props => {
 			this.projectName = props.projectName;
 			// TODO: this is a hack because questions aren't written yet; remove later
 			props.questionPreference = 'Gimme a blog, like, NOW.';
@@ -52,11 +52,11 @@ var StraticGenerator = yeoman.extend({
 			};
 
 			done();
-		}.bind(this));
+		});
 	},
 
 	writing: {
-		gulpfile: function () {
+		gulpfile () {
 			this.fs.copyTpl(
 				this.templatePath('gulpfile.js'),
 				this.destinationPath('gulpfile.js'),
@@ -65,7 +65,7 @@ var StraticGenerator = yeoman.extend({
 			);
 		},
 
-		mainHTML: function () {
+		mainHTML () {
 			this.fs.copyTpl(
 				this.templatePath('src/index.jade'),
 				this.destinationPath('src/index.jade'),
@@ -79,21 +79,21 @@ var StraticGenerator = yeoman.extend({
 			);
 		},
 
-		styles: function () {
+		styles () {
 			this.fs.copy(
 				this.templatePath('src/styles/main.styl'),
 				this.destinationPath('src/styles/main.styl')
 			);
 		},
 
-		scripts: function () {
+		scripts () {
 			this.fs.copy(
 				this.templatePath('src/scripts/main.js'),
 				this.destinationPath('src/scripts/main.js')
 			);
 		},
 
-		blogTemplates: function () {
+		blogTemplates () {
 			this.fs.copy(
 				this.templatePath('src/includes/post.jade'),
 				this.destinationPath('src/includes/post.jade')
@@ -118,7 +118,7 @@ var StraticGenerator = yeoman.extend({
 			);
 		},
 
-		packageJSON: function () {
+		packageJSON () {
 			this.fs.copyTpl(
 				this.templatePath('_package.json'),
 				this.destinationPath('package.json'),
@@ -127,21 +127,21 @@ var StraticGenerator = yeoman.extend({
 			);
 		},
 
-		gitignore: function () {
+		gitignore () {
 			this.fs.copy(
 				this.templatePath('gitignore'),
 				this.destinationPath('.gitignore')
 			);
 		},
 
-		editorConfig: function () {
+		editorConfig () {
 			this.fs.copy(
 				this.templatePath('editorconfig'),
 				this.destinationPath('.editorconfig')
 			);
 		},
 
-		jshint: function () {
+		jshint () {
 			this.fs.copy(
 				this.templatePath('jshintrc'),
 				this.destinationPath('.jshintrc')
@@ -149,7 +149,7 @@ var StraticGenerator = yeoman.extend({
 		}
 	},
 
-	end: function () {
+	end () {
 		this.installDependencies({ bower: false });
 	}
 });
