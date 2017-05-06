@@ -66,6 +66,12 @@ gulp.task('build:js', function() {
 
 });
 
+gulp.task('build:images', function() {
+	return gulp.src('src/img/*')
+	           .pipe(gulp.dest('dist/img'));
+
+});
+
 gulp.task('lint', ['lint:html', 'lint:css', 'lint:js']);
 
 gulp.task('lint:html', [''], function() {

@@ -3,6 +3,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var mkdirp = require('mkdirp');
 
 var StraticGenerator = yeoman.extend({
 	initializing () {
@@ -91,6 +92,11 @@ var StraticGenerator = yeoman.extend({
 				this.templatePath('src/scripts/main.js'),
 				this.destinationPath('src/scripts/main.js')
 			);
+		},
+
+		images () {
+			/* TODO: don't do sync I/O here */
+			mkdirp.sync(path.join(this.destinationRoot(), 'src/images/'));
 		},
 
 		blogTemplates () {
