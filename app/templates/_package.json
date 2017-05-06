@@ -1,6 +1,7 @@
 {
   "name": "package",
   "version": "0.0.0",
+  "license": "CC-BY-SA-4.0",
   "dependencies": {},
   "devDependencies": {
     "ecstatic": "^2.1.0",
@@ -10,13 +11,13 @@
     "gulp-attach-to-template": "^1.0.0",
     "gulp-gray-matter": "^3.0.1",
     "gulp-jade": "^1.1.0",
-    "gulp-remark": "^3.0.0",
+    "gulp-remark": "^4.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.6.0",
     "gulp-util": "^3.0.8",
-    "remark-html": "^5.1.0",
-    "stratic-date-in-path": "^2.0.0",
+    "remark-html": "^6.0.0",
+    "stratic-date-in-path": "^3.0.0",
     "stratic-paginate-indexes": "^1.0.1",
-    "stratic-posts-to-index": "^1.0.0"
+    "stratic-posts-to-index": "^2.0.0"
   }
 }

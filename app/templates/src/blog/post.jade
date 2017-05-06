@@ -3,7 +3,7 @@ extends /src/includes/layout.jade
 include /src/includes/post.jade
 
 block head
-	title #{file.title} - <%= projectName %>
+	title #{file.data.title} - <%= projectName %>
 
 block content
 	+renderPost(file, false)

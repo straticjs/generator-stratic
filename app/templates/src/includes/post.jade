@@ -3,14 +3,14 @@ mixin renderPost(post, isIndex)
 		//- Title
 		if isIndex
 			a(href='/blog/' + post.relative.replace('.md', ''))
-				h2.p-name= post.title
+				h2.p-name= post.data.title
 		else
-			h1.p-name= post.title
+			h1.p-name= post.data.title
 
 		//- Metadata
-		- var author = post.author;
-		- var time = post.time;
-		- var categories = post.categories;
+		- var author = post.data.author;
+		- var time = post.data.time;
+		- var categories = post.data.categories;
 		- var date = new Date(time.epoch * 1000);
 		- var monthName = date.toLocaleString('en-us', {month: 'long'});
 		- var monthStr = date.getMonth() + 1;

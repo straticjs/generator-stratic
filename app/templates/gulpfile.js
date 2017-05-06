@@ -30,7 +30,7 @@ gulp.task('build:html', function() {
 
 gulp.task('build:blog:posts', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(frontMatter({property: ''}))
+	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
@@ -42,7 +42,7 @@ gulp.task('build:blog:posts', function() {
 
 gulp.task('build:blog:index', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(frontMatter({property: ''}))
+	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
