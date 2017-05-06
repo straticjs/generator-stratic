@@ -15,7 +15,7 @@ mixin renderPost(post, isIndex)
 		- var monthName = date.toLocaleString('en-us', {month: 'long'});
 		- var monthStr = date.getMonth() + 1;
 		- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
-		p.post-metadata Published by #[.p-author.h-card author] on 
+		p.post-metadata Published by #[span.p-author.h-card= author] on 
 			a(href='/blog/'+date.getFullYear()+'/'+monthStr+'/')= monthName
 			|  #{date.getDate()}, 
 			a(href='/blog/'+date.getFullYear()+'/')= date.getFullYear()
