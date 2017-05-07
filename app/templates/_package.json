@@ -19,6 +19,7 @@
     "remark-html": "^6.0.0",
     "stratic-date-in-path": "^3.0.0",
     "stratic-paginate-indexes": "^1.0.1",
-    "stratic-posts-to-index": "^2.0.0"
+    "stratic-posts-to-index": "^2.0.0",
+    "through2": "^2.0.3"
   }
 }
