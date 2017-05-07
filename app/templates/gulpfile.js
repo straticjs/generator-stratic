@@ -79,20 +79,6 @@ gulp.task('build:images', function() {
 
 });
 
-gulp.task('lint', ['lint:html', 'lint:css', 'lint:js']);
-
-gulp.task('lint:html', [''], function() {
-	// TODO
-});
-
-gulp.task('lint:css', [''], function() {
-	// TODO
-});
-
-gulp.task('lint:js', [''], function() {
-	// TODO
-});
-
 gulp.task('deploy', ['build'], function(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
 });
