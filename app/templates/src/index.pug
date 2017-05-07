@@ -1,4 +1,4 @@
-extends /src/includes/layout.jade
+extends /src/includes/layout.pug
 
 <% var date = new Date(Date.now()); %>
 
@@ -8,7 +8,7 @@ block head
 block content
 	h1 <%= projectName %>
 	p Welcome to your new website!
-	p You can hack on your HTML using #[a(href='http://jade-lang.com') Jade], you can write CSS in #[a(href='http://stylus-lang.com') Stylus], and you can write scripts in JavaScript!
+	p You can hack on your HTML using #[a(href='http://pug-lang.com') pug], you can write CSS in #[a(href='http://stylus-lang.com') Stylus], and you can write scripts in JavaScript!
 	<% var monthStr = date.getMonth() + 1; %>
 	<% monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString(); %>
 	p Also, check out #[a(href='/blog/<%= date.getFullYear() %>/<%= monthStr %>/hello-world') Hello World] on your brand-new #[a(href='/blog/') blog]!

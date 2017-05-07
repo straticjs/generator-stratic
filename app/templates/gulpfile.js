@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber'),
-    jade = require('gulp-jade'),
+    pug = require('gulp-pug'),
     stylus = require('gulp-stylus'),
     rename = require('gulp-rename'),
     remark = require('gulp-remark'),
@@ -25,9 +25,9 @@ gulp.task('build', ['build:html', 'build:css', 'build:js', 'build:blog']);
 gulp.task('build:blog', ['build:blog:posts', 'build:blog:index']);
 
 gulp.task('build:html', function() {
-	return gulp.src('src/*.jade')
+	return gulp.src('src/*.pug')
 	           .pipe(isDist ? through2.obj() : plumber())
-	           .pipe(jade({ pretty: true, basedir: __dirname }))
+	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
 });
@@ -38,9 +38,9 @@ gulp.task('build:blog:posts', function() {
 	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
-	           .pipe(addsrc('src/blog/post.jade'))
-	           .pipe(attachToTemplate('post.jade'))
-	           .pipe(jade({ pretty: true, basedir: __dirname }))
+	           .pipe(addsrc('src/blog/post.pug'))
+	           .pipe(attachToTemplate('post.pug'))
+	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
 });
@@ -51,10 +51,10 @@ gulp.task('build:blog:index', function() {
 	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
-	           .pipe(addsrc('src/blog/index.jade'))
-	           .pipe(postsToIndex('index.jade'))
+	           .pipe(addsrc('src/blog/index.pug'))
+	           .pipe(postsToIndex('index.pug'))
 	           .pipe(paginateIndexes())
-	           .pipe(jade({ pretty: true, basedir: __dirname }))
+	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
 });
@@ -90,9 +90,9 @@ gulp.task('serve', ['watch'], function() {
 });
 
 gulp.task('watch', ['build'], function() {
-	gulp.watch(['src/*.jade', 'src/includes/*.jade'], ['build:html', 'build:blog:posts', 'build:blog:index']);
+	gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html', 'build:blog:posts', 'build:blog:index']);
 	gulp.watch('src/styles/*.styl', ['build:css']);
 	gulp.watch('src/scripts/*.js', ['build:js']);
 	gulp.watch('src/blog/*.md', ['build:blog']);
-	gulp.watch('src/blog/*.jade', ['build:blog:posts', 'build:blog:index']);
+	gulp.watch('src/blog/*.pug', ['build:blog:posts', 'build:blog:index']);
 });
