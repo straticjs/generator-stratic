@@ -23,6 +23,7 @@ var files = ['package.json',
              'src/includes/post.jade',
              'src/scripts/main.js',
              'src/styles/main.styl',
+             'src/images/.gitkeep',
              '.jshintrc'];
 
 describe('stratic:app', function () {
