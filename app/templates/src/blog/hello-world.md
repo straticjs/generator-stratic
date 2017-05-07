@@ -3,7 +3,7 @@ title: "Hello, World!"
 time:
   epoch: <%= Math.floor(Date.now() / 1000) %>
   utcoffset: "UTC-0"
-author: "Alex Jordan"
+author: "Jane Doe"
 categories:
   - example
 ---
