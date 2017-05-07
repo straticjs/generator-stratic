@@ -2,11 +2,18 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
-## 1.0.0 beta 3 - future
+## 1.0.0 beta 3 - 2017-05-07
+
+### Fixed
+
+* Fix gulpfile looking for JS in the wrong directory
 
 ### Changed
 
 * Upgrade deps
+* Generate a directory for images
+* Handler errors better in the gulpfile using gulp-plumber
+* Minor cleanups
 
 ### Breaking
 
