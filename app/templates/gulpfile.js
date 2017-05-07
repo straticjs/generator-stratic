@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
+    plumber = require('gulp-plumber'),
     jade = require('gulp-jade'),
     stylus = require('gulp-stylus'),
     rename = require('gulp-rename'),
@@ -23,6 +24,7 @@ gulp.task('build:blog', ['build:blog:posts', 'build:blog:index']);
 
 gulp.task('build:html', function() {
 	return gulp.src('src/*.jade')
+	           .pipe(plumber())
 	           .pipe(jade({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
@@ -30,6 +32,7 @@ gulp.task('build:html', function() {
 
 gulp.task('build:blog:posts', function() {
 	return gulp.src('src/blog/*.md')
+	           .pipe(plumber())
 	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
@@ -42,6 +45,7 @@ gulp.task('build:blog:posts', function() {
 
 gulp.task('build:blog:index', function() {
 	return gulp.src('src/blog/*.md')
+	           .pipe(plumber())
 	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
@@ -55,6 +59,7 @@ gulp.task('build:blog:index', function() {
 
 gulp.task('build:css', function() {
 	return gulp.src('src/styles/*.styl')
+	           .pipe(plumber())
 	           .pipe(stylus())
 	           .pipe(rename({ extname: '.css' }))
 	           .pipe(gulp.dest('dist/css'));

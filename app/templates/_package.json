@@ -11,6 +11,7 @@
     "gulp-attach-to-template": "^1.0.0",
     "gulp-gray-matter": "^3.0.1",
     "gulp-jade": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-remark": "^4.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.6.0",
