@@ -67,15 +67,15 @@ var StraticGenerator = yeoman.extend({
 
 		mainHTML () {
 			this.fs.copyTpl(
-				this.templatePath('src/index.jade'),
-				this.destinationPath('src/index.jade'),
+				this.templatePath('src/index.pug'),
+				this.destinationPath('src/index.pug'),
 				{
 					projectName: this.projectName
 				}
 			);
 			this.fs.copy(
-				this.templatePath('src/includes/layout.jade'),
-				this.destinationPath('src/includes/layout.jade')
+				this.templatePath('src/includes/layout.pug'),
+				this.destinationPath('src/includes/layout.pug')
 			);
 		},
 
@@ -99,23 +99,23 @@ var StraticGenerator = yeoman.extend({
 
 		blogTemplates () {
 			this.fs.copy(
-				this.templatePath('src/includes/post.jade'),
-				this.destinationPath('src/includes/post.jade')
+				this.templatePath('src/includes/post.pug'),
+				this.destinationPath('src/includes/post.pug')
 			);
 			this.fs.copyTpl(
 				this.templatePath('src/blog/hello-world.md'),
 				this.destinationPath('src/blog/hello-world.md')
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/blog/index.jade'),
-				this.destinationPath('src/blog/index.jade'),
+				this.templatePath('src/blog/index.pug'),
+				this.destinationPath('src/blog/index.pug'),
 				{
 					projectName: this.projectName
 				}
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/blog/post.jade'),
-				this.destinationPath('src/blog/post.jade'),
+				this.templatePath('src/blog/post.pug'),
+				this.destinationPath('src/blog/post.pug'),
 				{
 					projectName: this.projectName
 				}
