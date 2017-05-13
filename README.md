@@ -46,7 +46,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 ## License
 
-Yeoman is licensed under the MIT license. generator-stratic is licensed under the LGPL 2.
+Yeoman is licensed under the MIT license. generator-stratic is licensed under the LGPL 3.0 or later.
 
 ## Naming
 
