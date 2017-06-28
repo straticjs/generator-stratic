@@ -4,6 +4,8 @@ node_js:
   - '5'
   - '6'
   - '7'
+env:
+  - STRATIC_TEST_EXPENSIVE=true
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-stratic' ]; then cd .. && eval "mv $currentfolder generator-stratic" && cd generator-stratic; fi

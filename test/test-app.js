@@ -7,7 +7,7 @@ var assert = require('yeoman-assert');
 var os = require('os');
 var spawn = require('smart-spawn');
 
-// Tests failing on your local machine? Try increasing this timeout.
+// Tests in the "expensive" suite failing on your local machine? Try increasing this timeout.
 var installTimeout = 40 * 1000;
 
 var files = ['package.json',
@@ -50,9 +50,9 @@ describe('stratic:app', function () {
 
 	it('creates source files with the correct content');
 
+	if (process.env.STRATIC_TEST_EXPENSIVE !== 'true') return;
+
 	it('can run `gulp build`', function (done) {
-		// TODO: only do this when requested
-		// TODO: assert that the correct files are created
 		this.timeout(installTimeout);
 		spawn('npm', ['install'], tmpdir, function (err) {
 			if (err) return done(err);

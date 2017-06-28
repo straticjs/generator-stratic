@@ -37,12 +37,14 @@ Finally, initiate the generator:
 yo stratic
 ```
 
-### Getting To Know Yeoman
+## Testing
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+`generator-stratic` tests can be run with `npm test`. If you want to run _all_ tests, including very expensive ones that take a lot of time, export `STRATIC_TEST_EXPENSIVE` to the environment with a value of `true`, like so:
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+    $ export STRATIC_TEST_EXPENSIVE=true
+	$ npm test
 
+Travis CI will run all expensive tests by default, so most of the time you can just run the inexpensive tests locally and let Travis run the expensive ones when you submit a Pull Request.
 
 ## License
 
