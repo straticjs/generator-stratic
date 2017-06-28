@@ -2,6 +2,17 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
+## 1.0.0 beta 4 - 2017-06-28
+
+### Added
+
+* Generated projects now have support for drafts and RSS feeds
+
+### Changed
+
+* Switch from Jade to Pug
+* Small `package.json` cleanups
+
 ## 1.0.0 beta 3 - 2017-05-07
 
 ### Fixed
