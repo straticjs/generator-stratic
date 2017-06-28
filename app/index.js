@@ -22,7 +22,7 @@ var StraticGenerator = yeoman.extend({
 			   name: 'projectName',
 			message: 'What\'s the name of your project?',
 			default: 'Stratic project'
-		}
+		},
 		/*
 		{
 			   type: 'list',
@@ -31,10 +31,17 @@ var StraticGenerator = yeoman.extend({
 			choices: ['Gimme a blog, like, NOW.', 'I have time for a couple important ones.', 'Show ALL the advanced options!']
 		}
 		*/
+		{
+			   type: 'input',
+			   name: 'projectUrl',
+			message: 'What URL will your blog have? I need this for RSS support.',
+			default: 'http://example.com/blog/'
+		}
 		];
 
 		this.prompt(prompts).then(props => {
 			this.projectName = props.projectName;
+			this.projectUrl = props.projectUrl;
 			// TODO: this is a hack because questions aren't written yet; remove later
 			props.questionPreference = 'Gimme a blog, like, NOW.';
 			switch(props.questionPreference) {
@@ -61,6 +68,7 @@ var StraticGenerator = yeoman.extend({
 				this.templatePath('gulpfile.js'),
 				this.destinationPath('gulpfile.js'),
 				{
+					projectUrl: this.projectUrl
 				}
 			);
 		},

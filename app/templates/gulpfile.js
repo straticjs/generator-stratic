@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     dateInPath = require('stratic-date-in-path'),
     postsToIndex = require('stratic-posts-to-index'),
     paginateIndexes = require('stratic-paginate-indexes'),
+    indexesToRss = require('stratic-indexes-to-rss'),
     addsrc = require('gulp-add-src'),
     ecstatic = require('ecstatic'),
     ghpages = require('gh-pages'),
@@ -22,7 +23,7 @@ var gulp = require('gulp'),
     isDist = process.argv.indexOf('serve') === -1;
 
 gulp.task('build', ['build:html', 'build:css', 'build:js', 'build:blog']);
-gulp.task('build:blog', ['build:blog:posts', 'build:blog:index']);
+gulp.task('build:blog', ['build:blog:posts', 'build:blog:index', 'build:blog:rss']);
 
 gulp.task('build:html', function() {
 	return gulp.src('src/*.pug')
@@ -56,6 +57,20 @@ gulp.task('build:blog:index', function() {
 	           .pipe(paginateIndexes())
 	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist/blog'));
+});
+
+gulp.task('build:blog:rss', function() {
+	return gulp.src('src/blog/*.md')
+	           .pipe(frontMatter())
+	           .pipe(remark({quiet: true}).use(remarkHtml))
+	           .pipe(dateInPath())
+	           .pipe(addsrc('src/blog/index.pug'))
+	           .pipe(postsToIndex('index.pug'))
+	           .pipe(indexesToRss({
+		           title: 'My personal blog'
+	           }, '<%= projectUrl %>'))
+	           .pipe(rename({ extname: '.rss' }))
 	           .pipe(gulp.dest('dist/blog'));
 });
 
