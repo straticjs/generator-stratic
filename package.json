@@ -5,11 +5,7 @@
   "license": "LGPL-3.0+",
   "main": "app/index.js",
   "repository": "strugee/generator-stratic",
-  "author": {
-    "name": "Alex Jordan",
-    "email": "",
-    "url": "https://github.com/strugee"
-  },
+  "author": "AJ Jordan <alex@strugee.net>",
   "engines": {
     "node": ">=0.10.0"
   },
