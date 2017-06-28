@@ -69,6 +69,8 @@ describe('stratic:app', function () {
 
 	it('will build the correct JS content');
 
+	it('will build the correct RSS content');
+
 	it('will build valid HTML files');
 
 	it('will build HTML with valid microformats2 markup');
@@ -76,6 +78,8 @@ describe('stratic:app', function () {
 	it('will build valid CSS files');
 
 	it('will build valid JS files');
+
+	it('will build valid RSS files');
 
 	it('can run `gulp serve`');
 
