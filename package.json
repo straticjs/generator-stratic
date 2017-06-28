@@ -16,7 +16,11 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "stratic",
+    "static",
+    "staticsite",
+    "blog"
   ],
   "dependencies": {
     "chalk": "^1.1.3",
