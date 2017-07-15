@@ -1,4 +1,4 @@
-# generator-stratic [![Build Status](https://secure.travis-ci.org/strugee/generator-stratic.png?branch=master)](https://travis-ci.org/strugee/generator-stratic) [![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/generator-stratic.svg)](https://greenkeeper.io/)
+# generator-stratic [![Build Status](https://travis-ci.org/straticjs/generator-stratic.svg?branch=master)](https://travis-ci.org/straticjs/generator-stratic) [![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/generator-stratic.svg)](https://greenkeeper.io/)
 
 The streaming static site generator
 
