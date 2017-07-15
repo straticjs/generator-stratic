@@ -8,7 +8,7 @@ var os = require('os');
 var spawn = require('smart-spawn');
 
 // Tests in the "expensive" suite failing on your local machine? Try increasing this timeout.
-var installTimeout = 40 * 1000;
+var installTimeout = 60 * 1000;
 
 var files = ['package.json',
              '.editorconfig',
