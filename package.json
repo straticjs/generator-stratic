@@ -23,7 +23,6 @@
     "blog"
   ],
   "dependencies": {
-    "chalk": "^1.1.3",
     "yeoman-generator": "^1.1.0",
     "yosay": "^2.0.0"
   },
