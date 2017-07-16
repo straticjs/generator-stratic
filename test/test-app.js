@@ -1,16 +1,16 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-test');
-var assert = require('yeoman-assert');
-var os = require('os');
-var spawn = require('smart-spawn');
+const path = require('path'),
+      helpers = require('yeoman-test'),
+      assert = require('yeoman-assert'),
+      os = require('os'),
+      spawn = require('smart-spawn');
 
 // Tests in the "expensive" suite failing on your local machine? Try increasing this timeout.
-var installTimeout = 90 * 1000;
+const installTimeout = 90 * 1000;
 
-var files = ['package.json',
+const files = ['package.json',
              '.editorconfig',
              'package.json',
              'gulpfile.js',
@@ -27,7 +27,7 @@ var files = ['package.json',
              '.jshintrc'];
 
 describe('stratic:app', function () {
-	var tmpdir = path.join(os.tmpdir(), './temp-test');
+	const tmpdir = path.join(os.tmpdir(), './temp-test');
 
 	beforeEach(function () {
 		return helpers.run(path.join(__dirname, '../app'))
@@ -43,9 +43,7 @@ describe('stratic:app', function () {
 	});
 
 	it('templates source files properly', function () {
-		assert.noFileContent(files.map(function (filename) {
-			return [filename, '<%'];
-		}));
+		assert.noFileContent(files.map(filename => [filename, '<%']));
 	});
 
 	it('creates source files with the correct content');
