@@ -7,6 +7,8 @@
 ### Changed
 
 * Removed unneeded dependency
+* Generated .gitignore files now ignore build artifacts in `dist/`
+* Upgraded to yeoman-generator@2
 
 ## 1.0.0 beta 4 - 2017-06-28
 
