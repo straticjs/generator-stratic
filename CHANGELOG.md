@@ -2,7 +2,7 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
-## 1.0.0 beta 5 - Future
+## 1.0.0 beta 5 - 2017-09-23
 
 ### Changed
 
