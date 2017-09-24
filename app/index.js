@@ -1,13 +1,14 @@
+
 'use strict';
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var StraticGenerator = yeoman.extend({
+class StraticGenerator extends yeoman {
 	initializing () {
 		this.pkg = require('../package.json');
-	},
+	}
 
 	prompting () {
 		var done = this.async();
@@ -60,110 +61,100 @@ var StraticGenerator = yeoman.extend({
 
 			done();
 		});
-	},
+	}
 
-	writing: {
-		gulpfile () {
-			this.fs.copyTpl(
-				this.templatePath('gulpfile.js'),
-				this.destinationPath('gulpfile.js'),
-				{
-					projectUrl: this.projectUrl
-				}
-			);
-		},
+	writing () {
+		// gulpfile
+		this.fs.copyTpl(
+			this.templatePath('gulpfile.js'),
+			this.destinationPath('gulpfile.js'),
+			{
+				projectUrl: this.projectUrl
+			}
+		);
 
-		mainHTML () {
-			this.fs.copyTpl(
-				this.templatePath('src/index.pug'),
-				this.destinationPath('src/index.pug'),
-				{
-					projectName: this.projectName
-				}
-			);
-			this.fs.copy(
-				this.templatePath('src/includes/layout.pug'),
-				this.destinationPath('src/includes/layout.pug')
-			);
-		},
+		// Main Pug files
+		this.fs.copyTpl(
+			this.templatePath('src/index.pug'),
+			this.destinationPath('src/index.pug'),
+			{
+				projectName: this.projectName
+			}
+		);
+		this.fs.copy(
+			this.templatePath('src/includes/layout.pug'),
+			this.destinationPath('src/includes/layout.pug')
+		);
 
-		styles () {
-			this.fs.copy(
-				this.templatePath('src/styles/main.styl'),
-				this.destinationPath('src/styles/main.styl')
-			);
-		},
+		// Styles
+		this.fs.copy(
+			this.templatePath('src/styles/main.styl'),
+			this.destinationPath('src/styles/main.styl')
+		);
 
-		scripts () {
-			this.fs.copy(
-				this.templatePath('src/scripts/main.js'),
-				this.destinationPath('src/scripts/main.js')
-			);
-		},
+		// Clientside JS
+		this.fs.copy(
+			this.templatePath('src/scripts/main.js'),
+			this.destinationPath('src/scripts/main.js')
+		);
 
-		images () {
-			this.fs.write(this.destinationPath('src/images/.gitkeep'), '');
-		},
+		// Static images
+		this.fs.write(this.destinationPath('src/images/.gitkeep'), '');
 
-		blogTemplates () {
-			this.fs.copy(
-				this.templatePath('src/includes/post.pug'),
-				this.destinationPath('src/includes/post.pug')
-			);
-			this.fs.copyTpl(
-				this.templatePath('src/blog/hello-world.md'),
-				this.destinationPath('src/blog/hello-world.md')
-			);
-			this.fs.copyTpl(
-				this.templatePath('src/blog/index.pug'),
-				this.destinationPath('src/blog/index.pug'),
-				{
-					projectName: this.projectName
-				}
-			);
-			this.fs.copyTpl(
-				this.templatePath('src/blog/post.pug'),
-				this.destinationPath('src/blog/post.pug'),
-				{
-					projectName: this.projectName
-				}
-			);
-		},
+		// Blog Pug files
+		this.fs.copy(
+			this.templatePath('src/includes/post.pug'),
+			this.destinationPath('src/includes/post.pug')
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/blog/hello-world.md'),
+			this.destinationPath('src/blog/hello-world.md')
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/blog/index.pug'),
+			this.destinationPath('src/blog/index.pug'),
+			{
+				projectName: this.projectName
+			}
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/blog/post.pug'),
+			this.destinationPath('src/blog/post.pug'),
+			{
+				projectName: this.projectName
+			}
+		);
 
-		packageJSON () {
-			this.fs.copyTpl(
-				this.templatePath('_package.json'),
-				this.destinationPath('package.json'),
-				{
-				}
-			);
-		},
+		// package.json
+		this.fs.copyTpl(
+			this.templatePath('_package.json'),
+			this.destinationPath('package.json'),
+			{
+			}
+		);
 
-		gitignore () {
-			this.fs.copy(
-				this.templatePath('gitignore'),
-				this.destinationPath('.gitignore')
-			);
-		},
+		// .gitignore
+		this.fs.copy(
+			this.templatePath('gitignore'),
+			this.destinationPath('.gitignore')
+		);
 
-		editorConfig () {
-			this.fs.copy(
-				this.templatePath('editorconfig'),
-				this.destinationPath('.editorconfig')
-			);
-		},
+		// .editorconfig
+		this.fs.copy(
+			this.templatePath('editorconfig'),
+			this.destinationPath('.editorconfig')
+		);
 
-		jshint () {
-			this.fs.copy(
-				this.templatePath('jshintrc'),
-				this.destinationPath('.jshintrc')
-			);
-		}
-	},
+		// .jshintrc
+		this.fs.copy(
+			this.templatePath('jshintrc'),
+			this.destinationPath('.jshintrc')
+		);
+	}
 
 	end () {
 		this.installDependencies({ bower: false });
 	}
-});
+}
 
 module.exports = StraticGenerator;
