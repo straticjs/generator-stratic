@@ -2,6 +2,16 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
+## 1.0.0 beta 6 - 2017-09-25
+
+### Changed
+
+* Bumped generated dependencies
+
+### Fixed
+
+* UTC offsets are now properly taken into account (straticjs/RFCs#28)
+
 ## 1.0.0 beta 5 - 2017-09-23
 
 ### Changed
