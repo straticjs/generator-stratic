@@ -1,6 +1,6 @@
 {
   "name": "generator-stratic",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Yeoman generator for Stratic, the streaming static site generator",
   "license": "LGPL-3.0+",
   "main": "app/index.js",
