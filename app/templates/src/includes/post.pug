@@ -11,14 +11,10 @@ mixin renderPost(post, isIndex)
 		- var author = post.data.author;
 		- var time = post.data.time;
 		- var categories = post.data.categories;
-		- var date = new Date(time.epoch * 1000);
-		- var monthName = date.toLocaleString('en-us', {month: 'long'});
-		- var monthStr = date.getMonth() + 1;
-		- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
 		p Published by #[span.p-author.h-card= author] on 
-			a(href='/blog/'+date.getFullYear()+'/'+monthStr+'/')= monthName
-			|  #{date.getDate()}, 
-			a(href='/blog/'+date.getFullYear()+'/')= date.getFullYear()
+			a(href='/blog/'+time.year+'/'+time.monthUrlStr+'/')= time.monthName
+			|  #{time.dayOfMonth}, 
+			a(href='/blog/'+time.year+'/')= time.year
 			|  in 
 			for category, index in categories
 				a.p-category(href='/blog/category/' + category + '/') #{category}

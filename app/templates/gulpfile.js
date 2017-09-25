@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     attachToTemplate = require('gulp-attach-to-template'),
     filterDrafts = require('stratic-filter-drafts'),
     dateInPath = require('stratic-date-in-path'),
+    decorateFiles = require('stratic-decorate-files'),
     postsToIndex = require('stratic-posts-to-index'),
     paginateIndexes = require('stratic-paginate-indexes'),
     indexesToRss = require('stratic-indexes-to-rss'),
@@ -39,6 +40,7 @@ gulp.task('build:blog:posts', function() {
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
+	           .pipe(decorateFiles())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.pug'))
@@ -53,6 +55,7 @@ gulp.task('build:blog:index', function() {
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
+	           .pipe(decorateFiles())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.pug'))
