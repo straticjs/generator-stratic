@@ -4,10 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/straticjs/generator-stratic/badge.svg?branch=master)](https://coveralls.io/github/straticjs/generator-stratic?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/generator-stratic.svg)](https://greenkeeper.io/)
 
-The streaming static site generator
-
-> [Yeoman](http://yeoman.io) generator
-
+Stratic, the streaming static site generator - [Yeoman](http://yeoman.io) generator
 
 ## Getting Started
 
