@@ -10,7 +10,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "nyc -r lcov mocha"
   },
   "files": [
     "app"
@@ -23,11 +23,13 @@
     "blog"
   ],
   "dependencies": {
+    "coveralls": "^3.0.0",
     "yeoman-generator": "^2.0.0",
     "yosay": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.0",
+    "nyc": "^11.2.1",
     "smart-spawn": "^2.0.1",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
