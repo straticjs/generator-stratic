@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     decorateFiles = require('stratic-decorate-files'),
     postsToIndex = require('stratic-posts-to-index'),
     paginateIndexes = require('stratic-paginate-indexes'),
+    truncateIndexes = require('stratic-truncate-indexes'),
     indexesToRss = require('stratic-indexes-to-rss'),
     addsrc = require('gulp-add-src'),
     ecstatic = require('ecstatic'),
@@ -74,6 +75,7 @@ gulp.task('build:blog:rss', function() {
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.pug'))
 	           .pipe(postsToIndex('index.pug'))
+	           .pipe(truncateIndexes())
 	           .pipe(indexesToRss({
 		           title: 'My personal blog'
 	           }, '<%= projectUrl %>'))
