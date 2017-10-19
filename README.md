@@ -1,6 +1,6 @@
 # generator-stratic
 
-[![Build Status](https://travis-ci.org/straticjs/generator-stratic.svg?branch=master)](https://travis-ci.org/straticjs/generator-stratic) [![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/generator-stratic.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/straticjs/generator-stratic.svg?branch=master)](https://travis-ci.org/straticjs/generator-stratic)
 [![Coverage Status](https://coveralls.io/repos/github/straticjs/generator-stratic/badge.svg?branch=master)](https://coveralls.io/github/straticjs/generator-stratic?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/generator-stratic.svg)](https://greenkeeper.io/)
 
