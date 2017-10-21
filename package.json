@@ -8,6 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/straticjs/generator-stratic.git"
   },
+  "bugs": {
+    "url": "https://github.com/straticjs/generator-stratic/issues"
+  },
+  "homepage": "https://github.com/straticjs/generator-stratic#readme",
   "author": "AJ Jordan <alex@strugee.net>",
   "engines": {
     "node": ">=4"
