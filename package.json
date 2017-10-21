@@ -4,7 +4,10 @@
   "description": "Yeoman generator for Stratic, the streaming static site generator",
   "license": "LGPL-3.0+",
   "main": "app/index.js",
-  "repository": "strugee/generator-stratic",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/straticjs/generator-stratic.git"
+  },
   "author": "AJ Jordan <alex@strugee.net>",
   "engines": {
     "node": ">=4"
