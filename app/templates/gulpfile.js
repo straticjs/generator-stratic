@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
     plumber = require('gulp-plumber'),
     pug = require('gulp-pug'),
     stylus = require('gulp-stylus'),
@@ -19,6 +18,7 @@ var gulp = require('gulp'),
     indexesToRss = require('stratic-indexes-to-rss'),
     addsrc = require('gulp-add-src'),
     ecstatic = require('ecstatic'),
+    log = require('fancy-log'),
     ghpages = require('gh-pages'),
     path = require('path'),
     http = require('http'),
@@ -104,7 +104,7 @@ gulp.task('build:images', function() {
 });
 
 gulp.task('deploy', ['build'], function(done) {
-	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
 });
 
 gulp.task('serve', ['watch'], function() {
