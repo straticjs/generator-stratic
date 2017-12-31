@@ -4,9 +4,19 @@
 
 ## 1.0.0 beta 7 - 2017-12-31
 
+### Added
+
+* Started tracking code coverage data
+
+### Changed
+
+* RSS feeds are now truncated to 15 posts
+* Improved `package.json` metadata
+
 ### Fixed
 
-* Replace `gulp-util` which has been [deprecated upstream](https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5)
+* Replaced `gulp-util` which has been [deprecated upstream](https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5)
+* No longer generate an unused Bower manifest
 
 ## 1.0.0 beta 6 - 2017-09-25
 
