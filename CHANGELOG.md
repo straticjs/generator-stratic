@@ -2,6 +2,12 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
+## 1.0.0 beta 7 - 2017-12-31
+
+### Fixed
+
+* Replace `gulp-util` which has been [deprecated upstream](https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5)
+
 ## 1.0.0 beta 6 - 2017-09-25
 
 ### Changed
