@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "coveralls": "^3.0.0",
-    "yeoman-generator": "^2.0.0",
+    "yeoman-generator": "^3.0.0",
     "yosay": "^2.0.0"
   },
   "devDependencies": {
