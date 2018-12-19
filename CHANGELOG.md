@@ -2,6 +2,12 @@
 
 `generator-stratic` follows [Semantic Versioning][1].
 
+## 1.0.0 beta 8 - future
+
+### Breaking
+
+* Drop Node 4, 5 and 7
+
 ## 1.0.0 beta 7 - 2017-12-31
 
 ### Added
