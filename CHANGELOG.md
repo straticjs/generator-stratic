@@ -4,6 +4,10 @@
 
 ## 1.0.0 beta 8 - future
 
+### Added
+
+* Add Node 10 support
+
 ### Breaking
 
 * Drop Node 4, 5 and 7
