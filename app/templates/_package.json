@@ -23,6 +23,6 @@
     "stratic-paginate-indexes": "^1.0.1",
     "stratic-posts-to-index": "^2.0.0",
     "stratic-truncate-indexes": "^1.0.0",
-    "through2": "^2.0.3"
+    "through2": "^3.0.1"
   }
 }
