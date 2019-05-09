@@ -25,9 +25,6 @@ var gulp = require('gulp'),
     through2 = require('through2'),
     isDist = process.argv.indexOf('serve') === -1;
 
-exports.build = gulp.parallel(buildHtml, buildCss, buildJs, buildBlog);
-exports['build:blog'] = gulp.parallel(buildPosts, buildIndex, buildRss);
-
 var buildHtml = exports['build:html'] = function buildHtml() {
 	return gulp.src('src/*.pug')
 	           .pipe(isDist ? through2.obj() : plumber())
@@ -51,7 +48,7 @@ var buildPosts = exports['build:blog:posts'] = function buildPosts() {
 	           .pipe(gulp.dest('dist/blog'));
 };
 
-var buildBlog = exports['build:blog:index'] = function buildBlog() {
+var buildIndexes = exports['build:blog:index'] = function buildIndexes() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(frontMatter())
@@ -103,8 +100,19 @@ var buildImages = exports['build:images'] = function buildImages() {
 
 };
 
-exports.deploy = gulp.serial(build, function deploy(done) {
+var buildBlog = exports['build:blog'] = gulp.parallel(buildPosts, buildIndexes, buildRss);
+var build = exports.build = gulp.parallel(buildHtml, buildCss, buildJs, buildBlog);
+
+exports.deploy = gulp.series(build, function deploy(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
+});
+
+var watch = exports.watch = gulp.parallel(build, function watch() {
+	gulp.watch(['src/*.pug', 'src/includes/*.pug'], buildHtml, buildPosts, buildIndexes);
+	gulp.watch('src/styles/*.styl', buildCss);
+	gulp.watch('src/scripts/*.js', buildJs);
+	gulp.watch('src/blog/*.md', buildBlog);
+	gulp.watch('src/blog/*.pug', buildPosts, buildIndexes);
 });
 
 exports.serve = gulp.parallel(watch, function listen() {
@@ -113,10 +121,3 @@ exports.serve = gulp.parallel(watch, function listen() {
 	).listen(process.env.PORT || 8080);
 });
 
-var watch = exports.watch = gulp.parallel('build', function watch() {
-	gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html', 'build:blog:posts', 'build:blog:index']);
-	gulp.watch('src/styles/*.styl', ['build:css']);
-	gulp.watch('src/scripts/*.js', ['build:js']);
-	gulp.watch('src/blog/*.md', ['build:blog']);
-	gulp.watch('src/blog/*.pug', ['build:blog:posts', 'build:blog:index']);
-});
