@@ -2,7 +2,7 @@
 title: "Hello, World!"
 time:
   epoch: <%= Math.floor(Date.now() / 1000) %>
-  utcoffset: "UTC-0"
+  utcoffset: "UTC-<%= (new Date()).getTimezoneOffset() / 60 %>"
 author: "Jane Doe"
 categories:
   - example
