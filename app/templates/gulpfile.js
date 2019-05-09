@@ -25,18 +25,18 @@ var gulp = require('gulp'),
     through2 = require('through2'),
     isDist = process.argv.indexOf('serve') === -1;
 
-gulp.task('build', ['build:html', 'build:css', 'build:js', 'build:blog']);
-gulp.task('build:blog', ['build:blog:posts', 'build:blog:index', 'build:blog:rss']);
+exports.build = gulp.parallel(buildHtml, buildCss, buildJs, buildBlog);
+exports['build:blog'] = gulp.parallel(buildPosts, buildIndex, buildRss);
 
-gulp.task('build:html', function() {
+var buildHtml = exports['build:html'] = function buildHtml() {
 	return gulp.src('src/*.pug')
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
-});
+};
 
-gulp.task('build:blog:posts', function() {
+var buildPosts = exports['build:blog:posts'] = function buildPosts() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(frontMatter())
@@ -49,9 +49,9 @@ gulp.task('build:blog:posts', function() {
 	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('build:blog:index', function() {
+var buildBlog = exports['build:blog:index'] = function buildBlog() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(frontMatter())
@@ -65,9 +65,9 @@ gulp.task('build:blog:index', function() {
 	           .pipe(pug({ pretty: true, basedir: __dirname }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('build:blog:rss', function() {
+var buildRss = exports['build:blog:rss'] = function buildRss() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
@@ -81,39 +81,39 @@ gulp.task('build:blog:rss', function() {
 	           }, '<%= projectUrl %>'))
 	           .pipe(rename({ extname: '.rss' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('build:css', function() {
+var buildCss = exports['build:css'] = function buildCss() {
 	return gulp.src('src/styles/*.styl')
 	           .pipe(isDist ? through2.obj() : plumber())
 	           .pipe(stylus())
 	           .pipe(rename({ extname: '.css' }))
 	           .pipe(gulp.dest('dist/css'));
-});
+};
 
-gulp.task('build:js', function() {
+var buildJs = exports['build:js'] = function buildJs() {
 	return gulp.src('src/scripts/*.js')
 	           .pipe(gulp.dest('dist/js'));
 
-});
+};
 
-gulp.task('build:images', function() {
+var buildImages = exports['build:images'] = function buildImages() {
 	return gulp.src('src/img/*')
 	           .pipe(gulp.dest('dist/img'));
 
-});
+};
 
-gulp.task('deploy', ['build'], function(done) {
+exports.deploy = gulp.serial(build, function deploy(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
 });
 
-gulp.task('serve', ['watch'], function() {
+exports.serve = gulp.parallel(watch, function listen() {
 	http.createServer(
 		ecstatic({ root: __dirname + '/dist' })
 	).listen(process.env.PORT || 8080);
 });
 
-gulp.task('watch', ['build'], function() {
+var watch = exports.watch = gulp.parallel('build', function watch() {
 	gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html', 'build:blog:posts', 'build:blog:index']);
 	gulp.watch('src/styles/*.styl', ['build:css']);
 	gulp.watch('src/scripts/*.js', ['build:js']);
