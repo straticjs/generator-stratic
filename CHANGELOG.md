@@ -6,7 +6,7 @@
 
 ### Added
 
-* Add Node 10 support
+* Add Node 10 and Node 12 support
 
 ### Changed
 
