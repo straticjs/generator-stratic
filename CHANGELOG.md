@@ -8,9 +8,13 @@
 
 * Add Node 10 support
 
+### Changed
+
+* Upgrade dependencies
+
 ### Breaking
 
-* Drop Node 4, 5 and 7
+* Drop Node 4, 5, 6, and 7
 
 ## 1.0.0 beta 7 - 2017-12-31
 
