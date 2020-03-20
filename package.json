@@ -35,6 +35,7 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
+    "gulp-cli": "^2.2.0",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
     "smart-spawn": "^2.0.1",
